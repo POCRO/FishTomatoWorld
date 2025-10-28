@@ -40,5 +40,6 @@
     "tabSize": 2
   },
   "appid": "wxb43a25c674f929a5",
-  "simulatorPluginLibVersion": {}
+  "simulatorPluginLibVersion": {},
+  "libVersion": "3.10.3"
 }
