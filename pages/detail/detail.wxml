@@ -1,0 +1,27 @@
+<!-- detail.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">{{marker.title}}</text>
+  </view>
+  
+  <view class="location-info">
+    <text>纬度: {{marker.latitude}}</text>
+    <text>经度: {{marker.longitude}}</text>
+  </view>
+
+  <view class="description">
+    <textarea placeholder="添加描述..." value="{{description}}" bindinput="onDescriptionChange"></textarea>
+  </view>
+
+  <view class="image-section">
+    <block wx:if="{{imageUrl}}">
+      <image src="{{imageUrl}}" mode="aspectFit" bindtap="previewImage"></image>
+    </block>
+    <button bindtap="chooseImage">{{imageUrl ? '更换图片' : '添加图片'}}</button>
+  </view>
+
+  <view class="actions">
+    <button type="primary" bindtap="saveMarker">保存</button>
+    <button type="warn" bindtap="deleteMarker">删除</button>
+  </view>
+</view>

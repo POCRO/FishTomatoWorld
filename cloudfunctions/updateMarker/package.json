@@ -1,0 +1,12 @@
+{
+  "name": "updateMarker",
+  "version": "1.0.0",
+  "description": "Update marker information",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

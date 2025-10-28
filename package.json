@@ -1,0 +1,11 @@
+{
+  "name": "ourmap",
+  "version": "1.0.0",
+  "description": "共享地图小程序",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "miniprogram-api-typings": "^4.1.0"
+  }
+}

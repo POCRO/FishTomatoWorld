@@ -1,0 +1,43 @@
+.controls {
+  position: fixed;
+  right: 30rpx;
+  bottom: 100rpx;
+}
+
+.location-button {
+  width: 80rpx;
+  height: 80rpx;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.marker-callout {
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300rpx;
+}
+
+.marker-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.marker-actions {
+  display: flex;
+  gap: 20rpx;
+}
