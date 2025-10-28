@@ -2,6 +2,8 @@
 <view class="topbar">
   <input class="search-input" placeholder="搜索地址或地点" bindinput="onSearchInput" bindconfirm="onSearchConfirm" value="{{searchQuery}}" />
   <button bindtap="moveToLocation" class="location-button">定位</button>
+  <!-- 切换我的地点列表 -->
+  <button bindtap="toggleMyLocations" class="my-locations-toggle">我的地点</button>
 </view>
 
 <map id="map"
@@ -24,10 +26,21 @@
 </view>
 
 <!-- 已添加地点列表（我的地点） -->
-<view class="my-locations">
+<view class="my-locations-panel" wx:if="{{showMyLocations}}">
   <view class="my-locations-header">已保存地点</view>
   <block wx:for="{{myMarkers}}" wx:key="id">
-    <view class="my-location-item" bindtap="onSelectMyLocation" data-id="{{item.id}}">{{item.title}}</view>
+    <view class="my-location-item" bindtap="onSelectMyLocation" data-id="{{item.id}}">
+      <block wx:if="{{item.imageUrl}}">
+        <image class="thumb" src="{{item.imageUrl}}" mode="aspectFill" />
+      </block>
+      <block wx:else>
+        <view class="thumb placeholder">无图</view>
+      </block>
+      <view class="meta">
+        <view class="title">{{item.title}}</view>
+        <view class="desc">{{item.description ? (item.description.length > 40 ? item.description.slice(0, 40) + '…' : item.description) : (item.title ? (item.title.length > 40 ? item.title.slice(0,40) + '…' : item.title) : '')}}</view>
+      </view>
+    </view>
   </block>
 </view>
 

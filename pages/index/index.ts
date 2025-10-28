@@ -10,6 +10,7 @@ interface IPageData {
   searchQuery: string;
   filteredResults: Marker[];
   myMarkers: Marker[];
+  showMyLocations: boolean;
 }
 
 interface MapEvent extends WechatMiniprogram.BaseEvent {
@@ -40,7 +41,8 @@ Page<IPageData, WechatMiniprogram.Page.CustomOption>({
     searchQuery: '',
     filteredResults: [] as Marker[],
     // 我的地点（已保存的标记列表）
-    myMarkers: [] as Marker[]
+    myMarkers: [] as Marker[],
+    showMyLocations: false
   },
 
   onLoad() {
@@ -174,7 +176,13 @@ Page<IPageData, WechatMiniprogram.Page.CustomOption>({
         scale: 18,
         selectedMarker: marker
       });
+      // 选择后自动收起面板
+      this.setData({ showMyLocations: false });
     }
+  },
+
+  toggleMyLocations() {
+    this.setData({ showMyLocations: !this.data.showMyLocations });
   },
 
   onMarkerTap(e: { markerId: number }) {
