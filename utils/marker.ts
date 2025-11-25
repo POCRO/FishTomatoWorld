@@ -7,6 +7,7 @@ export interface Marker {
   description?: string;
   imageUrl?: string;
   _openid?: string;
+  mapId?: string;
   createTime?: Date;
   updateTime?: Date;
   iconPath?: string;
@@ -98,3 +99,48 @@ export const updateMarker = async (marker: Marker): Promise<boolean> => {
     }
   }
 };
+
+export const createMap = async (name: string, description?: string): Promise<{ success: boolean; id?: string }> => {
+  try {
+    const resp: any = await wx.cloud.callFunction({ name: 'createMap', data: { name, description } })
+    const result = resp && resp.result ? resp.result : undefined
+    if (result && result.id) return { success: true, id: result.id }
+    return { success: false }
+  } catch (err) {
+    console.error('创建地图失败:', err)
+    return { success: false }
+  }
+}
+
+export const inviteMember = async (mapId: string, inviteeOpenid: string): Promise<boolean> => {
+  try {
+    const resp: any = await wx.cloud.callFunction({ name: 'inviteMember', data: { mapId, inviteeOpenid } })
+    const result = resp && resp.result ? resp.result : undefined
+    return result && result.id ? true : false
+  } catch (err) {
+    console.error('邀请成员失败:', err)
+    return false
+  }
+}
+
+export const acceptInvite = async (inviteId: string): Promise<boolean> => {
+  try {
+    const resp: any = await wx.cloud.callFunction({ name: 'acceptInvite', data: { inviteId } })
+    const result = resp && resp.result ? resp.result : undefined
+    return result && result.success ? true : false
+  } catch (err) {
+    console.error('接受邀请失败:', err)
+    return false
+  }
+}
+
+export const getMaps = async (): Promise<any[]> => {
+  try {
+    const resp: any = await wx.cloud.callFunction({ name: 'getMaps' })
+    const result = resp && resp.result ? resp.result : undefined
+    return result && result.data ? result.data : []
+  } catch (err) {
+    console.error('获取 maps 失败:', err)
+    return []
+  }
+}

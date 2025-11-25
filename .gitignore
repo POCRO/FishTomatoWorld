@@ -1,0 +1,53 @@
+# Ignore node modules and local dev files
+
+# Node/npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# cloudfunctions local dependencies (installed per-function)
+cloudfunctions/*/node_modules/
+cloudfunctions/*/npm-debug.log*
+cloudfunctions/*/package-lock.json
+
+# WeChat Mini Program local / private config
+project.private.config.json
+project.private.config.*
+
+# DevTools / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Build / temp
+dist/
+build/
+temp/
+tmp/
+.tmp/
+.cache/
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.bak
+*.orig
+*.swp
+
+# miniprogram npm output (if used)
+miniprogram_npm/
